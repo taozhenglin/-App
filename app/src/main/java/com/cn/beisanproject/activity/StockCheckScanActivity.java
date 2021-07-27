@@ -172,6 +172,7 @@ public class StockCheckScanActivity extends AppCompatActivity implements QRCodeV
 
 
             } else {// 如果不是来自库存盘点 则继续扫描
+                ToastUtils.showShort("非本次盘点物资");
                 mZXingView.startSpot(); // 开始识别
                 mZXingView.startCamera();
             }
@@ -542,7 +543,7 @@ public class StockCheckScanActivity extends AppCompatActivity implements QRCodeV
         tv_prodution_no.setText("物资描述：" + resultBean.getITEMDESC());
         tv_prodution_desc.setText("库存数量：" + resultBean.getCURBAL());
         tv_stock_count.setVisibility(View.GONE);
-        tv_vendor.setVisibility(View.GONE);
+        tv_vendor.setText("仓库："+resultBean.getLOCATION());
         tv_vendor_name.setVisibility(View.GONE);
         tv_store_count.setVisibility(View.GONE);
         tv_store_location.setVisibility(View.GONE);
@@ -612,15 +613,15 @@ public class StockCheckScanActivity extends AppCompatActivity implements QRCodeV
         tv_assert_name.setText("固定资产名称:" + resultlistBean.getDESCRIPTION());
         tv_assert_type.setText("固定资产类别:" + resultlistBean.getASSETTYPE());
         tv_assert_xh.setText("固定资产型号" + resultlistBean.getPRODUCTMODEL());
-        tv_assert_statues.setText("状态:" + resultlistBean.getSTATUS());
+        tv_assert_statues.setText("使用人:"+resultlistBean.getEMPLOYEENUMBERDESC());
         tv_assert_count.setText("资产数量:" + resultlistBean.getAMOUNT());
-        tv_management.setText("项目主办部门:" + resultlistBean.getMANAGEMENT());
+        tv_management.setText("管理部门:"+resultlistBean.getMANAGEMENT());
         tv_count_unit.setText("计量单位:" + resultlistBean.getUNITS());
         tv_jjyt.setText("经济用途:" + resultlistBean.getJJYT());
         tv_department.setText("使用部门:" + resultlistBean.getDEPARTMENT());
         tv_syqk.setText("使用情况:" + resultlistBean.getSYQK());
         tv_buy_time.setText("购买日期:" + resultlistBean.getDATEOFPURCHASE());
-        tv_cfdd.setText("存放地点:" + resultlistBean.getCFDD());
+        tv_cfdd.setText("存放地点:" + resultlistBean.getCFDDDESC());
 
         TextView tv_go = (TextView) remarkView.findViewById(R.id.tv_go);
         TextView tv_close = (TextView) remarkView.findViewById(R.id.tv_close);
@@ -673,7 +674,7 @@ public class StockCheckScanActivity extends AppCompatActivity implements QRCodeV
                         JSONObject object = new JSONObject();
                         object.put("STOCKNUM", STOCKNUM);
                         object.put("UDLOTNUM", UDLOTNUM);
-                        object.put("SPQUANTITY", SharedPreferencesUtil.getString(this, resultlist.get(i).getUDLOTNUM()));
+//                        object.put("SPQUANTITY", SharedPreferencesUtil.getString(this, resultlist.get(i).getUDLOTNUM()));
                         object.put("CYQUANTITY", CYQUANTITY);
                         object.put("TYPE", TYPE);
                         jsonlist.add(object);
@@ -794,7 +795,7 @@ public class StockCheckScanActivity extends AppCompatActivity implements QRCodeV
         object.put("appid", "UDSTOCKLINE");
         object.put("objectname", "UDSTOCKLINE");
         object.put("curpage", 0);
-        object.put("showcount", 999);
+        object.put("showcount", 9999);
         object.put("option", "read");
         object.put("orderby", "LINENUM asc");
         String sqlSearch = "stocknum=" + mResultlistBean.getSTOCKNUM();

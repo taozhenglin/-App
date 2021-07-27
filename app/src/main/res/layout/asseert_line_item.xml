@@ -11,13 +11,21 @@
     android:padding="@dimen/dp5"
     >
 
+<TextView
+    android:id="@+id/tv_assert_no"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="固定资产编码："
+    android:textSize="@dimen/sp14"/>
 
 
     <LinearLayout
         android:id="@+id/ll_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_assert_no"
+        >
 
         <TextView
             android:id="@+id/tv_assert_name"
@@ -51,7 +59,9 @@
             android:layout_marginTop="@dimen/dp3"
             android:layout_weight="1"
             android:text="资产管理员："
-            android:textSize="@dimen/sp14" />
+            android:textSize="@dimen/sp14"
+            android:visibility="gone"
+            />
 
         <TextView
             android:id="@+id/tv_origin_value"
@@ -98,6 +108,7 @@
         android:layout_below="@+id/ll_3"
         android:layout_marginTop="@dimen/dp3"
         android:text="施工单位："
+        android:visibility="gone"
         android:textSize="@dimen/sp14" />
 
 

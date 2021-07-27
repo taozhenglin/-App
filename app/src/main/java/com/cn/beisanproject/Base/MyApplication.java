@@ -32,8 +32,8 @@ import com.cn.beisanproject.activity.MainActivity;
 import com.cn.beisanproject.modelbean.LoginBean;
 import com.cn.beisanproject.net.CallBackUtil;
 import com.cn.beisanproject.net.OkhttpUtil;
-import com.pgyer.pgyersdk.PgyerSDKManager;
-import com.pgyer.pgyersdk.crash.PgyCrashManager;
+//import com.pgyer.pgyersdk.PgyerSDKManager;
+//import com.pgyer.pgyersdk.crash.PgyCrashManager;
 
 
 import java.io.BufferedReader;

@@ -1,145 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <include
         android:id="@+id/top_bar"
         layout="@layout/activity_common_title"
-        android:visibility="gone"
-        />
-    <LinearLayout
+        android:visibility="gone" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp8"
-            android:layout_marginTop="@dimen/dp5">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_check_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="盘点单编号："
-                android:textSize="@dimen/sp14"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:id="@+id/tv_statues"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="盘点备注："
-                android:layout_marginTop="@dimen/dp3"
-                android:textSize="@dimen/sp14"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                android:visibility="gone"
-                android:textColor="@color/guide_blue"
-                />
-
-            <TextView
-                android:id="@+id/tv_check_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_check_no"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="盘点备注："
-                android:textSize="@dimen/sp14" />
-
-            <TextView
-                android:id="@+id/tv_check_by"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_check_desc"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="盘点人："
-                android:textSize="@dimen/sp14" />
-
-            <TextView
-                android:id="@+id/tv_check_starttime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_check_by"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="盘点开始时间："
-                android:textSize="@dimen/sp14" />
-
-            <TextView
-                android:id="@+id/tv_check_endtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_check_starttime"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="盘点结束时间："
-                android:textSize="@dimen/sp14" />
-
-            <TextView
-                android:id="@+id/tv_created_by"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_check_endtime"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="创建人："
-                android:textSize="@dimen/sp14" />
-
-            <TextView
-                android:id="@+id/tv_created_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_created_by"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="创建时间："
-                android:textSize="@dimen/sp14" />
-            <TextView
-                android:id="@+id/tv_owner_companny"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_created_time"
-                android:layout_marginTop="@dimen/dp3"
-                android:text="所属公司："
-                android:textSize="@dimen/sp14" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tvtitle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
-            android:layout_below="@+id/tv_contract_endtime"
-            android:background="@color/guide_blue"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dp8"
-            android:text="盘点明细行"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp14" />
-
-        <com.scwang.smart.refresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.scwang.smart.refresh.header.ClassicsHeader
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dip"
-                android:paddingBottom="0dip"
-                android:scrollbars="vertical" />
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp5">
 
-            <com.scwang.smart.refresh.footer.ClassicsFooter
+                <TextView
+                    android:id="@+id/tv_check_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="盘点单编号："
+                    android:textSize="@dimen/sp14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_statues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:layout_marginRight="5dp"
+                    android:text="盘点备注："
+                    android:textColor="@color/guide_blue"
+                    android:textSize="@dimen/sp14"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_check_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_check_no"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="盘点备注："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_check_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_check_desc"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="盘点人："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_check_starttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_check_by"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="盘点开始时间："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_check_endtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_check_starttime"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="盘点结束时间："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_created_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_check_endtime"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="创建人："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_created_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_created_by"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="创建时间："
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_owner_companny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_created_time"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text="所属公司："
+                    android:textSize="@dimen/sp14" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvtitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-    </LinearLayout>
+                android:layout_height="@dimen/dp40"
+                android:layout_below="@+id/tv_contract_endtime"
+                android:background="@color/guide_blue"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp8"
+                android:text="盘点明细行"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp14" />
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.scwang.smart.refresh.header.ClassicsHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dip"
+                        android:paddingBottom="0dip"
+                        android:scrollbars="vertical" />
+                </FrameLayout>
+
+                <com.scwang.smart.refresh.footer.ClassicsFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
     <TextView
         android:id="@+id/tv_approval"
         android:layout_width="match_parent"
@@ -149,6 +160,5 @@
         android:text="工作流审批"
         android:textColor="@color/white"
         android:textSize="@dimen/sp14"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 </LinearLayout>

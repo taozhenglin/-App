@@ -385,7 +385,10 @@ public class StockCheckScanZebraActivity extends AppCompatActivity implements Vi
                         object.put("SPQUANTITY", SharedPreferencesUtil.getString(this, resultlist.get(i).getUDLOTNUM()));
                         object.put("CYQUANTITY", CYQUANTITY);
                         object.put("TYPE", TYPE);
-                        jsonlist.add(object);
+                        if (!jsonlist.contains(object)){
+                            jsonlist.add(object);
+
+                        }
                     }
                 }
 

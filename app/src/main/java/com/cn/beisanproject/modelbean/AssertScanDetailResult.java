@@ -106,6 +106,14 @@ public class AssertScanDetailResult  implements Serializable {
         }
 
         public static class ResultlistBean {
+            public String getCFDDDESC() {
+                return CFDDDESC;
+            }
+
+            public void setCFDDDESC(String CFDDDESC) {
+                this.CFDDDESC = CFDDDESC;
+            }
+
             /**
              * ADMINISTRATOR :
              * ADMINISTRATORDESC :
@@ -143,6 +151,7 @@ public class AssertScanDetailResult  implements Serializable {
              * VENDOR : GK11024
              * VENDORDESC : 浙江双羊集团有限公司
              */
+            String CFDDDESC;
 
             private String ADMINISTRATOR;
             private String ADMINISTRATORDESC;

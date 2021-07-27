@@ -97,6 +97,7 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_back:
+                LogUtils.d("jsonList.size() = "+jsonList.size());
                 if (jsonList.size()>0){
                     showWarmPopupwindow();
                 }else
@@ -207,29 +208,31 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
     }
     @Override
     public void handleTagdata(TagData[] tagData) {
-        Log.d("222222", "handleTagdata");
         ToastUtils.showShort("handleTagdata");
         final StringBuilder sb = new StringBuilder();
         for (int index = 0; index < tagData.length; index++) {
-//            sb.append(tagData[index].getTagID() + "\n");
-            if (!list.contains(tagData[index].getTagID())) {
+            Log.d("222222", "handleTagdata"+tagData[index].getTagID());
+
+            if (!list.contains(tagData[index].getTagID())&&tagData[index].getTagID().startsWith("A10")) {
                 list.add(tagData[index].getTagID());
             }
         }
-        for (int i = 0; i < list.size(); i++) {
-            sb.append(list.get(i) + "\n");
+        Log.d("222222", "list = "+list);
 
-        }
+//        for (int i = 0; i < list.size(); i++) {
+//            sb.append(list.get(i) + "\n");
+//
+//        }
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-//                textrfid.append(sb.toString());
-                Log.d("222222", "sb.toString()=" + sb.toString() + "tagData.size" + tagData.length + "list.size=" + list.size());
-//                ToastUtils.showShort(sb.toString() + "list.size=" + list.size());
-
-            }
-        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+////                textrfid.append(sb.toString());
+////                Log.d("222222", "sb.toString()=" + sb.toString() + "tagData.size" + tagData.length + "list.size=" + list.size());
+////                ToastUtils.showShort(sb.toString() + "list.size=" + list.size());
+//
+//            }
+//        });
     }
 
     @Override
@@ -263,6 +266,7 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
                     for (int j = 0; j < list.size(); j++) {
                         if (resultlist.get(i).getRFIDNUM().equals(list.get(j))) {
                             View view = LayoutInflater.from(AssertCheckActivity.this).inflate(R.layout.asseert_line_item, ll_container, false);
+                            TextView tvAssertno= view.findViewById(R.id.tv_assert_no);
                             TextView tvAssertName = view.findViewById(R.id.tv_assert_name);
                             TextView tvAssertAdmin = view.findViewById(R.id.tv_assert_admin);
                             TextView tvDepartment = view.findViewById(R.id.tv_department);
@@ -281,13 +285,15 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
                             TextView tvOriginValue = view.findViewById(R.id.tv_origin_value);
                             TextView tvHasChecked = view.findViewById(R.id.tv_has_checked);
 
+                            tvAssertno.setText("固定资产编码:" + resultlist.get(i).getFIXASSETNUM());
+
                             tvAssertName.setText("固定资产名称：" + resultlist.get(i).getDESCRIPTION());
-                            tvAssertAdmin.setText("资产管理员：" + resultlist.get(i).getADMINISTRATOR());
+//                            tvAssertAdmin.setText("资产管理员：" + resultlist.get(i).getADMINISTRATOR());
                             tvDepartment.setText("使用部门：" + resultlist.get(i).getDEPARTMENT());
                             tvShiyongStatue.setText("使用情况：" + resultlist.get(i).getSYQK());
-                            tvShiyongPeople.setText("使用人：" + resultlist.get(i).getDISPLAYNAME());
-                            tvShigongDeparment.setText("施工单位：" + resultlist.get(i).getSGCOM());
-                            tvProjectDeparment.setText("项目主办方：" + resultlist.get(i).getMANAGEMENT());
+                            tvShiyongPeople.setText("使用人：" + resultlist.get(i).getEMPLOYEENUMBER());
+//                            tvShigongDeparment.setText("施工单位：" + resultlist.get(i).getSGCOM());
+                            tvProjectDeparment.setText("管理部门：" + resultlist.get(i).getMANAGEMENT());
                             tvOwnerCompanny.setText("所属公司：" + resultlist.get(i).getOWNERSITE());
                             tvAssertType.setText("固定资产类别：" + resultlist.get(i).getASSETTYPE());
                             tvXinghao.setText("固定资产型号：" + resultlist.get(i).getPRODUCTMODEL());
@@ -305,7 +311,9 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
                             jsonObj.put("PDHSYBM",resultlist.get(i).getPDHSYBM());
                             jsonObj.put("YPD","1");
                             jsonObj.put("TYPE","update");
-                            jsonList.add(jsonObj);
+                                jsonList.add(jsonObj);
+
+
 
                             int finalI = i;
 //                            view.setOnClickListener(new View.OnClickListener() {
@@ -341,6 +349,8 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
     protected void onDestroy() {
         super.onDestroy();
         rfidHandler.onDestroy();
+        list.clear();
+        jsonList.clear();
     }
 
     /**
@@ -358,7 +368,7 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
         object.put("appid", "FIXPDLINE");
         object.put("objectname", "FIXPDLINE");
         object.put("curpage", 0);
-        object.put("showcount", 20);
+        object.put("showcount", 99);
         object.put("option", "read");
         object.put("orderby", "");
         //模糊查询
@@ -376,13 +386,13 @@ public class AssertCheckActivity extends AppCompatActivity implements View.OnCli
         OkhttpUtil.okHttpGet(url, map, headermap, new CallBackUtil.CallBackString() {
             @Override
             public void onFailure(Call call, Exception e) {
-                LogUtils.d("onFailure=" + e.toString());
+                LogUtils.d("onFailure==" + e.toString());
                 ld.close();
             }
 
             @Override
             public void onResponse(String response) {
-                LogUtils.d("onResponse=" + response);
+                LogUtils.d("onResponse==" + response);
                 ld.close();
                 if (!response.isEmpty()) {
                     AssertDetailLineBean assertDetailLineBean = JSONObject.parseObject(response, new TypeReference<AssertDetailLineBean>() {

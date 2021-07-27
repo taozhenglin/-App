@@ -44,13 +44,14 @@ public class AssertDetailLineAdapter extends RecyclerView.Adapter<AssertDetailLi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.tvAssertno.setText("固定资产编码:" + mList.get(position).getFIXASSETNUM());
         holder.tvAssertName.setText("固定资产名称:" + mList.get(position).getDESCRIPTION());
-        holder.tvAssertAdmin.setText("资产管理员:" + mList.get(position).getADMINISTRATOR());
+//        holder.tvAssertAdmin.setText("资产管理员:" + mList.get(position).getADMINISTRATOR());
         holder.tvDepartment.setText("使用部门:" + mList.get(position).getDEPARTMENT());
         holder.tvShiyongStatue.setText("使用情况:" + mList.get(position).getSYQK());
         holder.tvShiyongPeople.setText("使用人:" + mList.get(position).getDISPLAYNAME());
-        holder.tvShigongDeparment.setText("施工单位:" + mList.get(position).getSGCOM());
-        holder.tvProjectDeparment.setText("项目主办方:" + mList.get(position).getMANAGEMENT());
+//        holder.tvShigongDeparment.setText("施工单位:" + mList.get(position).getSGCOM());
+        holder.tvProjectDeparment.setText("管理部门:" + mList.get(position).getMANAGEMENT());
         holder.tvOwnerCompanny.setText("所属公司:" + mList.get(position).getOWNERSITE());
         holder.tvAssertType.setText("固定资产类别:" + mList.get(position).getASSETTYPE());
         holder.tvXinghao.setText("固定资产型号:" + mList.get(position).getPRODUCTMODEL());
@@ -96,6 +97,9 @@ public class AssertDetailLineAdapter extends RecyclerView.Adapter<AssertDetailLi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_assert_no)
+        TextView tvAssertno;
         @BindView(R.id.tv_assert_name)
         TextView tvAssertName;
         @BindView(R.id.tv_assert_admin)

@@ -329,7 +329,7 @@ public class StockScanZerbaActivity extends AppCompatActivity implements View.On
         tv_prodution_no.setText("物资描述：" + resultBean.getITEMDESC());
         tv_prodution_desc.setText("库存数量：" + resultBean.getCURBAL());
         tv_stock_count.setVisibility(View.GONE);
-        tv_vendor.setVisibility(View.GONE);
+        tv_vendor.setText("仓库："+resultBean.getLOCATION());
         tv_vendor_name.setVisibility(View.GONE);
         tv_store_count.setVisibility(View.GONE);
         tv_store_location.setVisibility(View.GONE);
@@ -442,16 +442,16 @@ public class StockScanZerbaActivity extends AppCompatActivity implements View.On
         tv_assert_no.setText("固定资产编码:"+resultlistBean.getCWBM());
         tv_assert_name.setText("固定资产名称:"+resultlistBean.getDESCRIPTION());
         tv_assert_type.setText("固定资产类别:"+resultlistBean.getASSETTYPE());
-        tv_assert_xh.setText("固定资产型号"+resultlistBean.getPRODUCTMODEL());
-        tv_assert_statues.setText("状态:"+resultlistBean.getSTATUS());
+        tv_assert_xh.setText("固定资产型号："+resultlistBean.getPRODUCTMODEL());
+        tv_assert_statues.setText("使用人:"+resultlistBean.getEMPLOYEENUMBERDESC());
         tv_assert_count.setText("资产数量:"+resultlistBean.getAMOUNT());
-        tv_management.setText("项目主办部门:"+resultlistBean.getMANAGEMENT());
+        tv_management.setText("管理部门:"+resultlistBean.getMANAGEMENT());
         tv_count_unit.setText("计量单位:"+resultlistBean.getUNITS());
         tv_jjyt.setText("经济用途:"+resultlistBean.getJJYT());
         tv_department.setText("使用部门:"+resultlistBean.getDEPARTMENT());
         tv_syqk.setText("使用情况:"+resultlistBean.getSYQK());
         tv_buy_time.setText("购买日期:"+resultlistBean.getASSETTYPE());
-        tv_cfdd.setText("存放地点:"+resultlistBean.getCFDD());
+        tv_cfdd.setText("存放地点:"+resultlistBean.getCFDDDESC());
 
         TextView tv_go = (TextView) remarkView.findViewById(R.id.tv_go);
         TextView tv_close = (TextView) remarkView.findViewById(R.id.tv_close);
